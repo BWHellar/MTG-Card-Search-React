@@ -9,7 +9,7 @@ class App extends Component {
       <div>
         <h2> MTG Search </h2>
         <SearchCards />
-        <CardList/>
+        <CardList />
       </div>
     )
   }

@@ -17,14 +17,14 @@ class SearchCards extends Component {
   
   search (){
     let { name, cost } = this.state;
-    const url = `https://api.scryfall.com/cards/search?order=cmc&q=${name}+pow%3D${cost}`
+    const url = `https://api.magicthegathering.io/v1/cards?name=${name}&cmc{cost}`
     
     fetch (url, {
       method: 'GET'
     })
     .then(response => response.json())
     .then(json => {
-      this.props.setCards(json.data)
+      this.props.setCards(json.cards)
     });
   }
   

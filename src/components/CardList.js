@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import CardItem from './CardItem';
 
 class CardList extends Component {
   render(){
@@ -10,9 +11,7 @@ class CardList extends Component {
       {
         this.props.cards.map((card, index) => {
           return (
-            <div key={index}>
-              <h4>{card.name}</h4>
-            </div>
+            <CardItem key={index} card={card}/>
           )
         })
       }
