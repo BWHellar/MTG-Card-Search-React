@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, FormControl, Button } from 'react-bootstrap';
-
+import { connect } from 'react-redux';
+import { setCards } from '../actions';
 
 class SearchCards extends Component {
   constructor(){
@@ -22,7 +23,9 @@ class SearchCards extends Component {
       method: 'GET'
     })
     .then(response => response.json())
-    .then(json => console.log('cards', json));
+    .then(json => {
+      this.props.setCards(json.data)
+    });
   }
   
   
@@ -32,14 +35,14 @@ class SearchCards extends Component {
         <FormGroup>
           <h2>Name</h2>
           {' '}
-          <FormControl type="text" placeholder="Archangel"
+          <FormControl type="text" placeholder="Angel"
           onChange={event => this.setState({name: event.target.value})}/>
         </FormGroup>
         {' '}
         <FormGroup>
           <h2>Cost</h2>
           {' '}
-          <FormControl type="text" placeholder="White"
+          <FormControl type="text" placeholder="5"
           onChange={event => this.setState({cost: event.target.value})}/>
         </FormGroup>
         {' '}
@@ -49,4 +52,4 @@ class SearchCards extends Component {
   }
 }
 
-export default SearchCards;
+export default connect(null, { setCards })(SearchCards);
