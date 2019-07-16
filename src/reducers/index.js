@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SET_CARDS } from '../actions';
+import { SET_CARDS, FAVORITE_CARDS } from '../actions';
 
 function cards(state = [], action) {
   switch(action.type){
@@ -10,6 +10,16 @@ function cards(state = [], action) {
   }
 }
 
-const rootReducer = combineReducers({ cards });
+function favoriteCard(state = [], action) {
+  switch(action.type){
+    case FAVORITE_CARDS:
+      state=[...state, action.card]
+      return state;
+    default:
+      return state;
+  }
+}
+
+const rootReducer = combineReducers({ cards, favoriteCard });
 
 export default rootReducer;
