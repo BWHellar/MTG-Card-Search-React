@@ -17,7 +17,12 @@ class SearchCards extends Component {
   search (){
     let { name, cost } = this.state;
     const url = `https://api.scryfall.com/cards/search?order=cmc&q=${name}+pow%3D${cost}`
-    console.log('state', this.state, 'url', url);
+    
+    fetch (url, {
+      method: 'GET'
+    })
+    .then(response => response.json())
+    .then(json => console.log('cards', json));
   }
   
   
